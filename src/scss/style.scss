@@ -1,0 +1,13 @@
+@import 'variables';
+@import '~bulma/bulma';
+
+body {
+	// background-color: black;
+	min-height: 100vh;
+	max-width: 100%;
+}
+
+.json-output,
+.env-output {
+	background-color: #eeeeee;
+}
