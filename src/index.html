@@ -5,40 +5,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENV Local Generator</title>
-  <link rel="stylesheet" href="./scss/style.scss">
+  <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
+  <style>
+    body {
+      background-color: #252525;
+      min-height: 100vh;
+      max-width: 100%;
+    }
+
+    textarea::placeholder {
+      color: #f5f3f3;
+    }
+
+    .json-output,
+    .env-output {
+      user-select: all;
+    }
+  </style>
 </head>
 
 <body>
   <div id="main" class="main">
-    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item is-size-4" href="#">
           ENV Local Generator
         </a>
-
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
       </div>
-      <!-- <div class="navbar-menu navbar-end" id="navMenu">
-        <a class="navbar-item">Home</a>
-        <a class="navbar-item">About</a>
-      </div> -->
     </nav>
     <div class="container">
       <div class="columns">
         <div class="column">
-          <div class="card">
+          <div class="card has-background-dark mt-5">
             <div class="card-content">
-              <div class="notification is-danger is-hidden" id="notification">Please Enter Valid JSON!</div>
+              <div class="notification is-danger is-hidden" id="notification">Please enter valid JSON! Don't edit or
+                change config from firebase console just copy and paste it here.</div>
               <form id="convert-form">
                 <p class="title">
-                  <textarea class="textarea" id="json-str" placeholder="Enter Your JSON Here" rows="10"></textarea>
+                  <textarea class="textarea has-background-dark has-text-white-bis" id="json-str"
+                    placeholder="Enter Your JSON Here" rows="10" autofocus></textarea>
                 </p>
-                <button class="button is-primary is-rounded is-uppercase has-text-weight-bold" id="convert-btn"
-                  type="submit">Convert</button>
+                <button class="button is-info is-rounded is-uppercase" id="convert-btn" type="submit">Convert</button>
               </form>
             </div>
           </div>
@@ -46,32 +53,26 @@
       </div>
       <div class="columns is-hidden" id="output-container">
         <div class="column">
-          <div class="card">
-            <div class="card-content">
-              <p class="title">
-                <div class="columns">
-                  <div class="column">
-                    <article class="message">
-                      <div class="message-header">
-                        <p>ENV Local</p>
-                      </div>
-                      <textarea class="message-body env-output textarea" id="env-output" rows="10"></textarea>
-                    </article>
-                    <button class="button is-info is-rounded is-uppercase is-small copyBtn has-text-weight-bold"
-                      id="env-output-btn">Copy</button>
-                  </div>
-                  <div class="column">
-                    <article class="message">
-                      <div class="message-header">
-                        <p>Snippet</p>
-                      </div>
-                      <textarea class="message-body json-output textarea" id="json-output" rows="10"></textarea>
-                    </article>
-                    <button class="button is-info is-rounded is-uppercase is-small copyBtn has-text-weight-bold"
-                      id="json-output-btn">Copy</button>
-                  </div>
+          <div class="columns">
+            <div class="column">
+              <article class="message is-medium">
+                <div class="message-header has-background-info">
+                  <p>ENV File</p>
                 </div>
-              </p>
+                <textarea class="message-body env-output textarea has-background-dark has-text-white-bis"
+                  id="env-output" rows="10"></textarea>
+              </article>
+              <button class="button is-info is-rounded is-uppercase copyBtn" id="env-output-btn">Copy</button>
+            </div>
+            <div class="column">
+              <article class="message is-medium">
+                <div class="message-header has-background-info">
+                  <p>Reference</p>
+                </div>
+                <textarea class="message-body json-output textarea has-background-dark has-text-white-bis"
+                  id="json-output" rows="10"></textarea>
+              </article>
+              <button class="button is-info is-rounded is-uppercase copyBtn" id="json-output-btn">Copy</button>
             </div>
           </div>
         </div>
