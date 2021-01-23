@@ -1,14 +1,17 @@
 const JSON5 = require('json5');
 
-document.querySelector('#convert-form').addEventListener(
+const form = document.querySelector('#convert-form');
+form.addEventListener(
 	'submit',
-	function(ev) {
+	(ev) => {
 		ev.preventDefault();
+
 		const jsonOutput = document.querySelector('#json-output');
 		const envOutput = document.querySelector('#env-output');
 		const outputContainer = document.querySelector('#output-container');
 		const notification = document.querySelector('#notification');
 		const jsonStr = document.querySelector('#json-str').value;
+
 		notification.classList.add('is-hidden');
 
 		try {
@@ -36,45 +39,16 @@ document.querySelector('#convert-form').addEventListener(
 			setTimeout(() => notification.classList.add('is-hidden'), 3000);
 		}
 	},
-	false,
+	false
 );
 
-document.querySelector('#env-output-btn').addEventListener(
-	'click',
-	function(ev) {
-		copyText('#env-output');
-	},
-	false,
-);
+document
+	.querySelector('#env-output-btn')
+	.addEventListener('click', (ev) => copyText('#env-output'), false);
 
-document.querySelector('#json-output-btn').addEventListener(
-	'click',
-	function(ev) {
-		copyText('#json-output');
-	},
-	false,
-);
-
-document.addEventListener(
-	'DOMContentLoaded',
-	() => {
-		const $navbarBurgers = Array.prototype.slice.call(
-			document.querySelectorAll('.navbar-burger'),
-			0,
-		);
-		if ($navbarBurgers.length > 0) {
-			$navbarBurgers.forEach(el => {
-				el.addEventListener('click', () => {
-					const target = el.dataset.target;
-					const $target = document.getElementById(target);
-					el.classList.toggle('is-active');
-					$target.classList.toggle('is-active');
-				});
-			});
-		}
-	},
-	false,
-);
+document
+	.querySelector('#json-output-btn')
+	.addEventListener('click', (ev) => copyText('#json-output'), false);
 
 function copyText(id) {
 	document.querySelector(id).select();
