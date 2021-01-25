@@ -11,7 +11,7 @@ export function copyText(txt) {
 	const elem = document.createElement('textarea');
 	const body = document.body;
 
-	elem.style.opacity = 0.1;
+	elem.style.opacity = '0.1';
 	elem.value = txt;
 
 	body.append(elem);
