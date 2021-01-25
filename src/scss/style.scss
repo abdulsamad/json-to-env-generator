@@ -37,10 +37,40 @@ code {
 	user-select: all;
 }
 
+.message-body code {
+	background-color: #21252b;
+	color: #4a9aa5;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+	.key {
+		color: #e06c75;
+	}
+
+	.value {
+		color: #98c379;
+	}
+}
+
 .output-container {
 	padding: 2rem 0;
 }
 
 .output-box {
 	height: 100%;
+}
+
+.copy-button {
+	transition: transform 0.3s ease-in-out, opacity 0.5s ease-out;
+	opacity: 0;
+	transform: scale(0.8);
+}
+
+tr {
+	background-color: #21252b;
+
+	&:hover .copy-button {
+		opacity: 1;
+		transform: scale(1);
+	}
 }

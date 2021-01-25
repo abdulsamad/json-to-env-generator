@@ -51,12 +51,14 @@ class generateData {
 
 		// copy-button-elem class is used for event delegation
 		for (const key in obj) {
+			// prettier-ignore
+			const htmlText = `<span class="key">${prefix}${key.toUpperCase()}</span>=<span class="value">${obj[key]}</span>`;
 			const copyText = `${prefix}${key.toUpperCase()}=${obj[key]}`;
 
 			html += `
 			<tr>
 				<td>
-					<code class="content">${copyText}</code>
+					<code class="is-family-code">${htmlText}</code>
 				</td>
 				<td>
 					<button data-copy="${copyText}" class="button is-primary is-small copy-button copy-button-elem">
@@ -79,12 +81,14 @@ class generateData {
 
 		// copy-button-elem class is used for event delegation
 		for (const key in obj) {
+			// prettier-ignore
+			const htmlText = `<span class="key">${key}</span>: <span class="value">process.env.${prefix}${key.toUpperCase()}</span>`;
 			const copyText = `${key}: process.env.${prefix}${key.toUpperCase()}`;
 
 			html += `
 			<tr>
 				<td>
-					<code>${copyText}</code>
+					<code class="is-family-code">${htmlText}</code>
 				</td>
 				<td>
 					<button data-copy="${copyText}" class="button is-primary is-small copy-button copy-button-elem">
