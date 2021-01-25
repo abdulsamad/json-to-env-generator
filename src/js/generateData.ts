@@ -1,10 +1,11 @@
 import JSON5 from 'json5';
+import ClipboardIcon from '../assets/clipboard-icon.svg';
 
 class generateData {
 	str: object;
 	prefix: string;
 
-	constructor(str : string, prefix: string ) {
+	constructor(str: string, prefix: string) {
 		try {
 			const start = str.indexOf('{');
 			const end = str.lastIndexOf('}') + 1;
@@ -31,7 +32,6 @@ class generateData {
 
 	get envStr() {
 		let envLocalStr = '';
-
 		const obj = this.str;
 		const prefix = this.prefix;
 
@@ -42,24 +42,25 @@ class generateData {
 		return envLocalStr;
 	}
 
-	get jsonHTML() {
-		let html = '';
-
+	get envHTML() {
 		const obj = this.str;
 		const prefix = this.prefix;
+		let html = '';
 
-		// copy-button class is used for event delegation
+		// copy-button-elem class is used for event delegation
 		for (const key in obj) {
+			const copyText = `${prefix}${key.toUpperCase()}=${obj[key]}`;
+
 			html += `
 			<tr>
 				<td>
-					<code>${prefix}${key.toUpperCase()}=${obj[key]}</code>
+					<code class="content">${copyText}</code>
 				</td>
 				<td>
-					<button class="button copy-button">
-						<i role="img" aria-label="Copy to Clipboard" class="icon is-small copy-button">
-							📋
-						</i>
+					<button data-copy="${copyText}" class="button is-primary is-small copy-button copy-button-elem">
+						<span class="icon copy-button-elem">
+							<img class="is-16x16 copy-button-elem" src="${ClipboardIcon}" alt="clipbaord icon" />
+						</span>
 					</button>
 				</td>
 			</tr>
@@ -69,24 +70,25 @@ class generateData {
 		return html;
 	}
 
-	get envHTML() {
-		let html = '';
-
+	get jsonHTML() {
 		const obj = this.str;
 		const prefix = this.prefix;
+		let html = '';
 
-		// copy-button class is used for event delegation
+		// copy-button-elem class is used for event delegation
 		for (const key in obj) {
+			const copyText = `${prefix}${key.toUpperCase()}=${obj[key]}`;
+
 			html += `
 			<tr>
 				<td>
-					<code class="content">${prefix}${key.toUpperCase()}=${obj[key]}</code>
+					<code>${copyText}</code>
 				</td>
 				<td>
-					<button class="button copy-button">
-						<i role="img" aria-label="Copy to Clipboard" class="icon is-small copy-button">
-							📋
-						</i>
+					<button data-copy="${copyText}" class="button is-primary is-small copy-button copy-button-elem">
+						<span class="icon copy-button-elem">
+								<img class="is-16x16 copy-button-elem" src="${ClipboardIcon}" alt="clipbaord icon" />
+						</span>
 					</button>
 				</td>
 			</tr>
