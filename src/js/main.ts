@@ -13,14 +13,14 @@ form.addEventListener(
 		const refOutput = document.querySelector('#ref-output');
 		const envOutput = document.querySelector('#env-output');
 
-		const jsonStr = document.querySelector('#json-str').value;
-		const prefix = document.querySelector('#prefix').value;
+		const jsonStr = (document.querySelector('#json-str') as HTMLTextAreaElement).value;
+		const prefix = (document.querySelector('#prefix') as HTMLInputElement).value;
 
 		// Adding Class Just in Case
 		notification.classList.add('is-hidden');
 
 		try {
-			const data = new generateData({ str: jsonStr, prefix });
+			const data = new generateData( jsonStr, prefix );
 
 			envOutput.innerHTML = data.jsonHTML;
 			refOutput.innerHTML = data.envHTML;
@@ -44,11 +44,12 @@ document
 	.querySelector('#json-output-btn')
 	.addEventListener('click', () => copyText('#json-output'), false);
 
+// Try Sample Button
 document.querySelector('#try-sample-btn').addEventListener(
 	'click',
 	() => {
 		const jsonStr = document.querySelector('#json-str');
-		jsonStr.value = JSON5.stringify(dummyConfigJSON);
+		(<HTMLTextAreaElement>jsonStr).value = JSON5.stringify(dummyConfigJSON);
 	},
 	false
 );
@@ -57,7 +58,9 @@ document.querySelector('#try-sample-btn').addEventListener(
 document.querySelector('#env-output').addEventListener(
 	'click',
 	(ev) => {
-		if (ev.target.classList.contains('copy-button')) {
+		const target = ev.target as HTMLElement;
+
+		if (target.classList.contains('copy-button')) {
 			console.log(ev.target);
 		}
 	},
@@ -67,7 +70,9 @@ document.querySelector('#env-output').addEventListener(
 document.querySelector('#ref-output').addEventListener(
 	'click',
 	(ev) => {
-		if (ev.target.classList.contains('copy-button')) {
+		const target = ev.target as HTMLElement;
+
+		if (target.classList.contains('copy-button')) {
 			console.log(ev.target);
 		}
 	},
