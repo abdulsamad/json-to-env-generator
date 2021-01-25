@@ -6,22 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENV Local Generator</title>
   <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
-  <style>
-    body {
-      background-color: #252525;
-      min-height: 100vh;
-      max-width: 100%;
-    }
-
-    textarea::placeholder {
-      color: #f5f3f3;
-    }
-
-    .json-output,
-    .env-output {
-      user-select: all;
-    }
-  </style>
+  <link rel="stylesheet" href="./css/style.css">
+  <script defer src="./js/main.js"></script>
 </head>
 
 <body>
@@ -36,51 +22,76 @@
     <div class="container">
       <div class="columns">
         <div class="column">
-          <div class="card has-background-dark mt-5">
+          <div class="card has-background-dark mt-5 p-2">
             <div class="card-content">
               <div class="notification is-danger is-hidden" id="notification">Please enter valid JSON! Don't edit or
                 change config from firebase console just copy and paste it here.</div>
               <form id="convert-form">
-                <p class="title">
-                  <textarea class="textarea has-background-dark has-text-white-bis" id="json-str"
-                    placeholder="Enter Your JSON Here" rows="10" autofocus></textarea>
-                </p>
-                <button class="button is-info is-rounded is-uppercase" id="convert-btn" type="submit">Convert</button>
+                <div class="field mb-4">
+                  <p class="control">
+                    <textarea class="textarea has-background-dark has-text-white-bis" id="json-str"
+                      placeholder="Enter your config JSON here..." rows="10" autofocus required></textarea>
+                  </p>
+                </div>
+                <div class="field is-horizontal my-5">
+                  <div class="columns">
+                    <div class="column is-one-fifth">
+                      <label class="label has-text-white-bis mt-2 mr-3">Prefix</label>
+                    </div>
+                    <div class="column is-four-fifths">
+                      <div class="field-body">
+                        <div class="field">
+                          <p class="control">
+                            <input type="text" id="prefix" class="input is-uppercase" placeholder="REACT_APP_"
+                              value="REACT_APP_">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field mt-5">
+                  <button class="button is-info is-rounded is-uppercase" id="convert-btn" type="submit">Convert</button>
+                  <button class="button is-info is-outlined is-rounded ml-3" id="try-sample-btn">Try with
+                    Sample Data</button>
+                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
-      <div class="columns is-hidden" id="output-container">
-        <div class="column">
-          <div class="columns">
-            <div class="column">
-              <article class="message is-medium">
-                <div class="message-header has-background-info">
-                  <p>ENV File</p>
-                </div>
-                <textarea class="message-body env-output textarea has-background-dark has-text-white-bis"
-                  id="env-output" rows="10"></textarea>
-              </article>
-              <button class="button is-info is-rounded is-uppercase copyBtn" id="env-output-btn">Copy</button>
-            </div>
-            <div class="column">
-              <article class="message is-medium">
-                <div class="message-header has-background-info">
-                  <p>Reference</p>
-                </div>
-                <textarea class="message-body json-output textarea has-background-dark has-text-white-bis"
-                  id="json-output" rows="10"></textarea>
-              </article>
-              <button class="button is-info is-rounded is-uppercase copyBtn" id="json-output-btn">Copy</button>
-            </div>
+      <div class="container output-container is-hidden" id="output-container">
+        <div class="columns">
+          <div class="column output-box">
+            <article class="message is-medium">
+              <div class="message-header has-background-info">
+                <p>ENV File</p>
+              </div>
+              <table class="table message-body has-background-dark has-text-white-bis">
+                <tbody id="env-output"></tbody>
+              </table>
+            </article>
+            <button class="button is-info is-rounded is-uppercase copyBtn" id="env-output-btn">Copy</button>
+          </div>
+          <div class="column output-box">
+            <article class="message is-medium">
+              <div class="message-header has-background-info">
+                <p>Reference</p>
+              </div>
+              <table class="table message-body has-background-dark has-text-white-bis">
+                <tbody id="ref-output"></tbody>
+              </table>
+            </article>
+            <button class="button is-info is-rounded is-uppercase copyBtn" id="json-output-btn">Copy</button>
           </div>
         </div>
+
       </div>
     </div>
   </div>
+  </div>
 
-  <script src="./js/main.js"></script>
+
 </body>
 
 </html>
