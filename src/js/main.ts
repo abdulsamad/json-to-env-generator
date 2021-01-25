@@ -4,6 +4,7 @@ import { copyText, dummyConfigJSON } from './utils';
 import Toastify from './toastify';
 
 // Form Submission
+
 const form = document.querySelector('#convert-form');
 form.addEventListener(
 	'submit',
@@ -13,17 +14,39 @@ form.addEventListener(
 		const outputContainer = document.querySelector('#output-container');
 		const refOutput = document.querySelector('#ref-output');
 		const envOutput = document.querySelector('#env-output');
+		const envOutputBtn = document.querySelector('#env-output-btn') as HTMLButtonElement;
+		const jsonOutputBtn = document.querySelector('#json-output-btn') as HTMLButtonElement;
 
-		const jsonStr = (document.querySelector('#json-str') as HTMLTextAreaElement)
-			.value;
-		const prefix = (document.querySelector('#prefix') as HTMLInputElement)
-			.value;
+		const jsonStr = (document.querySelector('#json-str') as HTMLTextAreaElement).value;
+		const prefix = (document.querySelector('#prefix') as HTMLInputElement).value;
 
 		try {
 			const data = new generateData(jsonStr, prefix);
 
-			envOutput.innerHTML = data.jsonHTML;
-			refOutput.innerHTML = data.envHTML;
+			envOutput.innerHTML = data.envHTML;
+			refOutput.innerHTML = data.jsonHTML;
+
+			// Copy all env output
+			envOutputBtn.onclick = () => {
+				copyText(data.envStr);
+				const myToast: any = Toastify({
+					text: 'Env Output Copied!',
+					duration: 3000,
+				});
+
+				myToast.showToast();
+			};
+
+			// Copy all JSON output
+			jsonOutputBtn.onclick = () => {
+				copyText(data.jsonStr);
+				const myToast: any = Toastify({
+					text: 'Reference Output Copied!',
+					duration: 3000,
+				});
+
+				myToast.showToast();
+			};
 
 			outputContainer.classList.remove('is-hidden');
 		} catch (err) {
@@ -39,36 +62,8 @@ form.addEventListener(
 	false
 );
 
-// Copy All Button Listeners
-document.querySelector('#env-output-btn').addEventListener(
-	'click',
-	() => {
-		copyText('#env-output');
-		const myToast: any = Toastify({
-			text: 'Env Output Copied!',
-			duration: 3000,
-		});
-
-		myToast.showToast();
-	},
-	false
-);
-
-document.querySelector('#json-output-btn').addEventListener(
-	'click',
-	() => {
-		copyText('#json-output');
-		const myToast: any = Toastify({
-			text: 'Reference Output Copied!',
-			duration: 3000,
-		});
-
-		myToast.showToast();
-	},
-	false
-);
-
 // Try Sample Button
+
 document.querySelector('#try-sample-btn').addEventListener(
 	'click',
 	() => {
@@ -78,15 +73,15 @@ document.querySelector('#try-sample-btn').addEventListener(
 	false
 );
 
-// Event Delegation
+// Event delegations for copying single items
+
 document.querySelector('#env-output').addEventListener(
 	'click',
 	(ev) => {
 		const target = ev.target as HTMLElement;
 
 		if (target.classList.contains('copy-button-elem')) {
-			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset
-				.copy;
+			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset.copy;
 			copyText(txt);
 
 			const myToast: any = Toastify({
@@ -106,8 +101,7 @@ document.querySelector('#ref-output').addEventListener(
 		const target = ev.target as HTMLElement;
 
 		if (target.classList.contains('copy-button-elem')) {
-			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset
-				.copy;
+			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset.copy;
 			copyText(txt);
 
 			const myToast: any = Toastify({

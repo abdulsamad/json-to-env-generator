@@ -17,19 +17,6 @@ class generateData {
 		}
 	}
 
-	get jsonStr() {
-		let newJsonStr = '';
-
-		const obj = this.str;
-		const prefix = this.prefix;
-
-		for (const key in obj) {
-			newJsonStr += `${key}: process.env.${prefix}${key.toUpperCase()}, \n`;
-		}
-
-		return newJsonStr;
-	}
-
 	get envStr() {
 		let envLocalStr = '';
 		const obj = this.str;
@@ -40,6 +27,21 @@ class generateData {
 		}
 
 		return envLocalStr;
+	}
+
+	get jsonStr() {
+		let newJSONStr = '';
+
+		const obj = this.str;
+		const prefix = this.prefix;
+
+		for (const key in obj) {
+			newJSONStr += `${key}: "process.env.${prefix}${key.toUpperCase()}",`;
+		}
+
+		newJSONStr = `const config = {${newJSONStr}}`;
+
+		return newJSONStr;
 	}
 
 	get envHTML() {
@@ -77,7 +79,7 @@ class generateData {
 
 		// copy-button-elem class is used for event delegation
 		for (const key in obj) {
-			const copyText = `${prefix}${key.toUpperCase()}=${obj[key]}`;
+			const copyText = `${key}: process.env.${prefix}${key.toUpperCase()}`;
 
 			html += `
 			<tr>
