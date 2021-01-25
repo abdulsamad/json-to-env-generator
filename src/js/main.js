@@ -1,4 +1,6 @@
-const JSON5 = require('json5');
+import JSON5 from 'json5';
+import generateData from './generateData';
+import { copyText, dummyConfigJSON } from './utils';
 
 const form = document.querySelector('#convert-form');
 form.addEventListener(
@@ -6,31 +8,22 @@ form.addEventListener(
 	(ev) => {
 		ev.preventDefault();
 
-		const jsonOutput = document.querySelector('#json-output');
-		const envOutput = document.querySelector('#env-output');
-		const outputContainer = document.querySelector('#output-container');
 		const notification = document.querySelector('#notification');
-		const jsonStr = document.querySelector('#json-str').value;
+		const outputContainer = document.querySelector('#output-container');
+		const refOutput = document.querySelector('#ref-output');
+		const envOutput = document.querySelector('#env-output');
 
+		const jsonStr = document.querySelector('#json-str').value;
+		const prefix = document.querySelector('#prefix').value;
+
+		// Adding Class Just in Case
 		notification.classList.add('is-hidden');
 
 		try {
-			let newJsonStr = '';
-			let envLocalStr = '';
-			const start = jsonStr.indexOf('{');
-			const end = jsonStr.lastIndexOf('}') + 1;
-			const obj = JSON5.parse(jsonStr.slice(start, end));
+			const data = new generateData({ str: jsonStr, prefix });
 
-			for (const key in obj) {
-				newJsonStr += `${key}: process.env.REACT_APP_${key.toUpperCase()}, \n`;
-
-				typeof obj[key] === 'string'
-					? (envLocalStr += `REACT_APP_${key.toUpperCase()} = "${obj[key]}" \n`)
-					: (envLocalStr += `REACT_APP_${key.toUpperCase()} = ${obj[key]} \n`);
-			}
-
-			envOutput.innerHTML = envLocalStr;
-			jsonOutput.innerHTML = newJsonStr;
+			envOutput.innerHTML = data.jsonHTML;
+			refOutput.innerHTML = data.envHTML;
 
 			outputContainer.classList.remove('is-hidden');
 		} catch (err) {
@@ -42,15 +35,41 @@ form.addEventListener(
 	false
 );
 
+// Button Listeners
 document
 	.querySelector('#env-output-btn')
-	.addEventListener('click', (ev) => copyText('#env-output'), false);
+	.addEventListener('click', () => copyText('#env-output'), false);
 
 document
 	.querySelector('#json-output-btn')
-	.addEventListener('click', (ev) => copyText('#json-output'), false);
+	.addEventListener('click', () => copyText('#json-output'), false);
 
-function copyText(id) {
-	document.querySelector(id).select();
-	document.execCommand('copy');
-}
+document.querySelector('#try-sample-btn').addEventListener(
+	'click',
+	() => {
+		const jsonStr = document.querySelector('#json-str');
+		jsonStr.value = JSON5.stringify(dummyConfigJSON);
+	},
+	false
+);
+
+// Event Delegation
+document.querySelector('#env-output').addEventListener(
+	'click',
+	(ev) => {
+		if (ev.target.classList.contains('copy-button')) {
+			console.log(ev.target);
+		}
+	},
+	false
+);
+
+document.querySelector('#ref-output').addEventListener(
+	'click',
+	(ev) => {
+		if (ev.target.classList.contains('copy-button')) {
+			console.log(ev.target);
+		}
+	},
+	false
+);
