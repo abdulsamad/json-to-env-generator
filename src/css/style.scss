@@ -9,23 +9,24 @@ body {
 	max-width: 100%;
 }
 
-.textarea::-webkit-input-placeholder {
+.textarea::-webkit-input-placeholder,
+.input::-webkit-input-placeholder {
 	color: #d3d3d3;
 }
-
-.textarea::-moz-placeholder {
+.textarea::-moz-placeholder,
+.input::-moz-placeholder {
 	color: #d3d3d3;
 }
-
-.textarea:-ms-input-placeholder {
+.textarea:-ms-input-placeholder,
+.input:-ms-input-placeholder {
 	color: #d3d3d3;
 }
-
-.textarea::-ms-input-placeholder {
+.textarea::-ms-input-placeholder,
+.input::-ms-input-placeholder {
 	color: #d3d3d3;
 }
-
-.textarea::placeholder {
+.textarea::placeholder,
+.input::placeholder {
 	color: #d3d3d3;
 }
 
