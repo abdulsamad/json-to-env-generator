@@ -1,48 +1,9 @@
-body {
-	background-color: #252525;
-	min-height: 100vh;
-	max-width: 100%;
-}
-
-.textarea::-webkit-input-placeholder {
-	color: #d3d3d3;
-}
-
-.textarea::-moz-placeholder {
-	color: #d3d3d3;
-}
-
-.textarea:-ms-input-placeholder {
-	color: #d3d3d3;
-}
-
-.textarea::-ms-input-placeholder {
-	color: #d3d3d3;
-}
-
-.textarea::placeholder {
-	color: #d3d3d3;
-}
-
-.json-output,
-.env-output {
-	-webkit-user-select: all;
-	-moz-user-select: all;
-	-ms-user-select: all;
-	user-select: all;
-}
-
-.output-container {
-	padding: 2rem 0;
-}
-
-.output-box {
-	height: 100%;
-}
-
-/*
+/*!
  * Toastify js 1.9.3
  * https://github.com/apvarun/toastify-js
+ * @license MIT licensed
+ *
+ * Copyright (C) 2018 Varun A P
  */
 
 .toastify {

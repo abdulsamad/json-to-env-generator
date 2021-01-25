@@ -5,14 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ENV Local Generator</title>
-  <link rel="stylesheet" href="../node_modules/bulma/css/bulma.min.css">
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.scss">
   <script defer src="./js/main.ts"></script>
 </head>
 
 <body>
   <div id="main" class="main">
-    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item is-size-4" href="#">
           ENV Local Generator
@@ -49,8 +48,9 @@
                   </div>
                 </div>
                 <div class="field mt-5">
-                  <button class="button is-info is-rounded is-uppercase" id="convert-btn" type="submit">Convert</button>
-                  <button class="button is-info is-outlined is-rounded ml-3" id="try-sample-btn">Try with
+                  <button class="button is-primary is-rounded is-uppercase" id="convert-btn"
+                    type="submit">Convert</button>
+                  <button class="button is-primary is-outlined is-rounded ml-3" id="try-sample-btn">Try with
                     Sample Data</button>
                 </div>
               </form>
@@ -62,25 +62,25 @@
         <div class="columns">
           <div class="column output-box">
             <article class="message is-medium">
-              <div class="message-header has-background-info">
+              <div class="message-header has-background-primary">
                 <p>ENV File</p>
               </div>
               <table class="table message-body has-background-dark has-text-white-bis">
                 <tbody id="env-output"></tbody>
               </table>
             </article>
-            <button class="button is-info is-rounded is-uppercase copyBtn" id="env-output-btn">Copy</button>
+            <button class="button is-primary is-rounded is-uppercase copyBtn" id="env-output-btn">Copy</button>
           </div>
           <div class="column output-box">
             <article class="message is-medium">
-              <div class="message-header has-background-info">
+              <div class="message-header has-background-primary">
                 <p>Reference</p>
               </div>
               <table class="table message-body has-background-dark has-text-white-bis">
                 <tbody id="ref-output"></tbody>
               </table>
             </article>
-            <button class="button is-info is-rounded is-uppercase copyBtn" id="json-output-btn">Copy</button>
+            <button class="button is-primary is-rounded is-uppercase copyBtn" id="json-output-btn">Copy</button>
           </div>
         </div>
 
