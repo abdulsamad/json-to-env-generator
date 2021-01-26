@@ -1,11 +1,14 @@
 @use '~bulma/bulma' with (
 	$primary: #73a5ff,
 	$card-shadow:  0 3px 6px rgba(0,0,0,0.16)#{","} 0 3px 6px rgba(0,0,0,0.23),
+	$scheme-main: #252525,
+	$footer-padding: 2rem 1.5rem,
+	$footer-background-color: transparent,
 );
-@use 'toastify.scss';
+@use 'toastify';
+@use 'animation';
 
 body {
-	background-color: #252525;
 	min-height: 100vh;
 	max-width: 100%;
 }
@@ -80,4 +83,9 @@ tr {
 		opacity: 1;
 		transform: translateY(-50%) scale(1);
 	}
+}
+
+.content-container {
+	height: calc(100% - 5.5rem);
+	overflow: auto;
 }
