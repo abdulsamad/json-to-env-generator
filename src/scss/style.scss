@@ -1,5 +1,6 @@
 @use '~bulma/bulma' with (
 	$primary: #73a5ff,
+	$card-shadow:  0 3px 6px rgba(0,0,0,0.16)#{","} 0 3px 6px rgba(0,0,0,0.23),
 );
 @use 'toastify.scss';
 
@@ -35,6 +36,10 @@ body {
 	-moz-user-select: all;
 	-ms-user-select: all;
 	user-select: all;
+}
+
+.card {
+	border-radius: 1rem;
 }
 
 .code-card {
