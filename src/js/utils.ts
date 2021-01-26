@@ -7,7 +7,7 @@ export const dummyConfigJSON = {
 	appId: '7311:4c91:411f:5ce7:6f76:f67e:37d2:a997',
 };
 
-export function copyText(txt) {
+export function copyText(txt: string) {
 	const elem = document.createElement('textarea');
 	const body = document.body;
 

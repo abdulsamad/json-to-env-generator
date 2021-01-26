@@ -19,7 +19,7 @@ class generateData {
 
 	get envStr() {
 		let envLocalStr = '';
-		const obj = this.str;
+		const obj: any = this.str;
 		const prefix = this.prefix;
 
 		for (const key in obj) {
@@ -45,7 +45,7 @@ class generateData {
 	}
 
 	get envHTML() {
-		const obj = this.str;
+		const obj: any = this.str;
 		const prefix = this.prefix;
 		let html = '';
 
