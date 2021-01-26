@@ -57,10 +57,8 @@ class generateData {
 
 			html += `
 			<tr>
-				<td>
+				<td class="is-relative">
 					<div class="is-family-code code">${htmlText}</div>
-				</td>
-				<td>
 					<button data-copy="${copyText}" class="button is-primary is-small copy-button copy-button-elem">
 						<span class="icon copy-button-elem">
 							<img class="is-16x16 copy-button-elem" src="${ClipboardIcon}" alt="clipbaord icon" />
@@ -87,10 +85,8 @@ class generateData {
 
 			html += `
 			<tr>
-				<td>
+				<td class="is-relative">
 					<div class="is-family-code code">${htmlText}</div>
-				</td>
-				<td>
 					<button data-copy="${copyText}" class="button is-primary is-small copy-button copy-button-elem">
 						<span class="icon copy-button-elem">
 								<img class="is-16x16 copy-button-elem" src="${ClipboardIcon}" alt="clipbaord icon" />
