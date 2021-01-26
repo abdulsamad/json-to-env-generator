@@ -58,7 +58,7 @@ class generateData {
 			html += `
 			<tr>
 				<td>
-					<code class="is-family-code">${htmlText}</code>
+					<div class="is-family-code code">${htmlText}</div>
 				</td>
 				<td>
 					<button data-copy="${copyText}" class="button is-primary is-small copy-button copy-button-elem">
@@ -88,7 +88,7 @@ class generateData {
 			html += `
 			<tr>
 				<td>
-					<code class="is-family-code">${htmlText}</code>
+					<div class="is-family-code code">${htmlText}</div>
 				</td>
 				<td>
 					<button data-copy="${copyText}" class="button is-primary is-small copy-button copy-button-elem">
