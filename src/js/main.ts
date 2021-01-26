@@ -16,15 +16,29 @@ form.addEventListener(
 		const envOutput = document.querySelector('#env-output');
 		const envOutputBtn = document.querySelector('#env-output-btn') as HTMLButtonElement;
 		const jsonOutputBtn = document.querySelector('#json-output-btn') as HTMLButtonElement;
+		const submitter = (<any>ev).submitter;
 
 		const jsonStr = (document.querySelector('#json-str') as HTMLTextAreaElement).value;
 		const prefix = (document.querySelector('#prefix') as HTMLInputElement).value;
 
+		// Animation reset
+		outputContainer.classList.add('is-hidden');
+		outputContainer.classList.remove('fade-in-down');
+
 		try {
 			const data = new generateData(jsonStr, prefix);
 
+			submitter.classList.add('is-loading');
+
 			envOutput.innerHTML = data.envHTML;
 			refOutput.innerHTML = data.jsonHTML;
+
+			// Delay in revealing from UX
+			setTimeout(() => {
+				outputContainer.classList.remove('is-hidden');
+				outputContainer.classList.add('fade-in-down');
+				submitter.classList.remove('is-loading');
+			}, 1000);
 
 			// Copy all env output
 			envOutputBtn.onclick = () => {
@@ -47,8 +61,6 @@ form.addEventListener(
 
 				myToast.showToast();
 			};
-
-			outputContainer.classList.remove('is-hidden');
 		} catch (err) {
 			// Setting to any to ignore typescript warning beacause no types included in library
 			const myToast: any = Toastify({
