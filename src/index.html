@@ -18,89 +18,104 @@
         </a>
       </div>
     </nav>
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <div class="card has-background-dark mt-5 p-2">
-            <div class="card-content">
-              <form id="convert-form">
-                <div class="field mb-4">
-                  <p class="control">
-                    <textarea class="textarea has-background-dark has-text-white-bis" id="json-str"
-                      placeholder="Enter your config JSON here..." rows="10" autofocus required></textarea>
-                  </p>
-                </div>
-                <div class="field is-horizontal my-5">
-                  <div class="columns">
-                    <div class="column is-one-fifth">
-                      <label class="label has-text-white-bis mt-2 mr-3">Prefix</label>
-                    </div>
-                    <div class="column is-four-fifths">
-                      <div class="field-body">
-                        <div class="field">
-                          <p class="control">
-                            <input type="text" id="prefix"
-                              class="input has-background-dark has-text-white-bis is-uppercase" placeholder="REACT_APP_"
-                              value="REACT_APP_">
-                          </p>
-                        </div>
+
+
+    <section class="section">
+      <div class="container">
+        <div class="card has-background-dark mt-5 p-2">
+          <div class="card-content">
+            <form id="convert-form">
+              <div class="field mb-4">
+                <p class="control">
+                  <textarea class="textarea has-background-dark has-text-white-bis" id="json-str"
+                    placeholder="Enter your config JSON here..." rows="6" autofocus required></textarea>
+                </p>
+              </div>
+              <div class="field is-horizontal my-5">
+                <div class="columns">
+                  <div class="column is-one-fifth">
+                    <label class="label has-text-white-bis mt-2 mr-3">Prefix</label>
+                  </div>
+                  <div class="column is-four-fifths">
+                    <div class="field-body">
+                      <div class="field">
+                        <p class="control">
+                          <input type="text" id="prefix"
+                            class="input has-background-dark has-text-white-bis is-uppercase" placeholder="REACT_APP_"
+                            value="REACT_APP_">
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="field mt-5">
-                  <button class="button is-primary is-rounded is-uppercase" id="convert-btn"
-                    type="submit">Convert</button>
-                  <button class="button is-primary is-outlined is-rounded ml-3" id="try-sample-btn">Try with
-                    Sample Data</button>
+              </div>
+              <div class="field mt-5">
+                <button class="button is-primary is-rounded is-uppercase" id="convert-btn"
+                  type="submit">Convert</button>
+                <button class="button is-primary is-outlined is-rounded ml-3" id="try-sample-btn">Try Sample
+                  Data</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-hidden output-container" id="output-container">
+      <div class="container">
+        <div class="columns is-desktop">
+          <div class="column is-half">
+            <div class="card code-card">
+              <header class="card-header has-background-primary">
+                <p class="card-header-title has-text-white-bis">
+                  Env File
+                </p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <table class="table">
+                    <tbody id="env-output"></tbody>
+                  </table>
                 </div>
-              </form>
+              </div>
+              <footer class="card-footer">
+                <button class="card-footer-item button is-primary" id="env-output-btn">
+                  <span class="icon is-small">
+                    <img class="is-16x16" src="./assets/clipboard-icon.svg" alt="clipboard icon">
+                  </span>
+                  <span>Copy</span>
+                </button>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card code-card">
+              <header class="card-header has-background-primary">
+                <p class="card-header-title has-text-white-bis">
+                  Reference
+                </p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <table class="table">
+                    <tbody id="ref-output"></tbody>
+                  </table>
+                </div>
+              </div>
+              <footer class="card-footer">
+                <button class="card-footer-item button is-primary" id="json-output-btn">
+                  <span class="icon is-small">
+                    <img class="is-16x16" src="./assets/clipboard-icon.svg" alt="clipboard icon">
+                  </span>
+                  <span>Copy</span>
+                </button>
+              </footer>
             </div>
           </div>
         </div>
       </div>
-      <div class="container output-container is-hidden" id="output-container">
-        <div class="columns">
-          <div class="column output-box">
-            <article class="message is-medium">
-              <div class="message-header has-background-primary">
-                <p>ENV File</p>
-              </div>
-              <table class="table message-body has-background-dark has-text-white-bis">
-                <tbody id="env-output"></tbody>
-              </table>
-            </article>
-            <button class="button is-primary is-rounded" id="env-output-btn">
-              <span class="icon is-small">
-                <img class="is-16x16" src="./assets/clipboard-icon.svg" alt="clipboard icon">
-              </span>
-              <span>Copy</span>
-            </button>
-          </div>
-          <div class="column output-box">
-            <article class="message is-medium">
-              <div class="message-header has-background-primary">
-                <p>Reference</p>
-              </div>
-              <table class="table message-body has-background-dark has-text-white-bis">
-                <tbody id="ref-output"></tbody>
-              </table>
-            </article>
-            <button class="button is-primary is-rounded" id="json-output-btn">
-              <span class="icon is-small">
-                <img class="is-16x16" src="./assets/clipboard-icon.svg" alt="clipboard icon">
-              </span>
-              <span>Copy</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    </section>
   </div>
-  </div>
-
-
 </body>
 
 </html>
