@@ -105,7 +105,8 @@ envOutput.addEventListener(
 		const target = ev.target as HTMLElement;
 
 		if (target.classList.contains('copy-button-elem')) {
-			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset.copy;
+			// data-copy will be added dynamically
+			const txt = (<any>target.closest('.copy-button')).dataset.copy;
 			copyText(txt);
 
 			Toastify({
@@ -129,7 +130,8 @@ refOutput.addEventListener(
 		const target = ev.target as HTMLElement;
 
 		if (target.classList.contains('copy-button-elem')) {
-			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset.copy;
+			// data-copy will be added dynamically
+			const txt = (<any>target.closest('.copy-button')).dataset.copy;
 			copyText(txt);
 
 			Toastify({
