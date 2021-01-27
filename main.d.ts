@@ -4,3 +4,4 @@ declare module '*.svg' {
 }
 
 declare module 'json5';
+declare module 'toastify-js';

@@ -5,15 +5,15 @@ import Toastify from './toastify';
 
 // Form Submission
 
-const form = document.querySelector('#convert-form');
+const form = document.querySelector('#convert-form') as HTMLFormElement;
 form.addEventListener(
 	'submit',
 	(ev) => {
 		ev.preventDefault();
 
-		const outputContainer = document.querySelector('#output-container');
-		const refOutput = document.querySelector('#ref-output');
-		const envOutput = document.querySelector('#env-output');
+		const outputContainer = document.querySelector('#output-container') as HTMLDivElement;
+		const refOutput = document.querySelector('#ref-output') as HTMLDivElement;
+		const envOutput = document.querySelector('#env-output') as HTMLDivElement;
 		const envOutputBtn = document.querySelector('#env-output-btn') as HTMLButtonElement;
 		const jsonOutputBtn = document.querySelector('#json-output-btn') as HTMLButtonElement;
 		const submitter = (<any>ev).submitter;
@@ -76,7 +76,8 @@ form.addEventListener(
 
 // Try Sample Button
 
-document.querySelector('#try-sample-btn').addEventListener(
+const trySampleBtn = document.querySelector('#try-sample-btn') as HTMLButtonElement;
+trySampleBtn.addEventListener(
 	'click',
 	() => {
 		const jsonStr = document.querySelector('#json-str');
@@ -87,7 +88,8 @@ document.querySelector('#try-sample-btn').addEventListener(
 
 // Event delegations for copying single items
 
-document.querySelector('#env-output').addEventListener(
+const envOutput = document.querySelector('#env-output') as HTMLDivElement;
+envOutput.addEventListener(
 	'click',
 	(ev) => {
 		const target = ev.target as HTMLElement;
@@ -107,7 +109,8 @@ document.querySelector('#env-output').addEventListener(
 	false
 );
 
-document.querySelector('#ref-output').addEventListener(
+const refOutput = document.querySelector('#ref-output') as HTMLDivElement;
+refOutput.addEventListener(
 	'click',
 	(ev) => {
 		const target = ev.target as HTMLElement;
