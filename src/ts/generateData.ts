@@ -11,7 +11,7 @@ class GenerateData {
 			const end = str.lastIndexOf('}') + 1;
 
 			this.str = JSON5.parse(str.slice(start, end));
-			this.prefix = prefix;
+			this.prefix = prefix.toUpperCase();
 		} catch (err) {
 			throw new Error(err);
 		}
@@ -51,8 +51,8 @@ class GenerateData {
 
 		// copy-button-elem class is used for event delegation
 		for (const key in obj) {
-			// prettier-ignore
-			const htmlText = `<span class="key">${prefix}${key.toUpperCase()}</span>=<span class="value">${obj[key]}</span>`;
+			const newKey = key.replace(/[A-Z]/g, (letter) => `_${letter}`).toUpperCase();
+			const htmlText = `<span class="key">${prefix}${newKey}</span>=<span class="value">${obj[key]}</span>`;
 			const copyText = `${prefix}${key.toUpperCase()}=${obj[key]}`;
 
 			html += `
@@ -79,8 +79,8 @@ class GenerateData {
 
 		// copy-button-elem class is used for event delegation
 		for (const key in obj) {
-			// prettier-ignore
-			const htmlText = `<span class="key">${key}</span>: <span class="value">process.env.${prefix}${key.toUpperCase()}</span>`;
+			const newKey = key.replace(/[A-Z]/g, (letter) => `_${letter}`).toUpperCase();
+			const htmlText = `<span class="key">${key}</span>: <span class="value">process.env.${prefix}${newKey}</span>`;
 			const copyText = `${key}: process.env.${prefix}${key.toUpperCase()}`;
 
 			html += `
