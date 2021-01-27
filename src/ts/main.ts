@@ -1,5 +1,5 @@
 import JSON5 from 'json5';
-import generateData from './generateData';
+import GenerateData from './generateData';
 import { copyText, dummyConfigJSON } from './utils';
 import Toastify from 'toastify-js';
 
@@ -26,7 +26,7 @@ form.addEventListener(
 		outputContainer.classList.remove('fade-in-down');
 
 		try {
-			const data = new generateData(jsonStr, prefix);
+			const data = new GenerateData(jsonStr, prefix);
 
 			submitter.classList.add('is-loading');
 
