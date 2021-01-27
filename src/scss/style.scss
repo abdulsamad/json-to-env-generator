@@ -13,6 +13,15 @@ body {
 	max-width: 100%;
 }
 
+::-webkit-scrollbar {
+	background-color: bulma.$white;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: bulma.$primary;
+}
+
 .textarea::-webkit-input-placeholder,
 .input::-webkit-input-placeholder {
 	color: #d3d3d3;
