@@ -38,7 +38,7 @@ class GenerateData {
 
 		for (const key in obj) {
 			const newKey = key.replace(/[A-Z]/g, (letter) => `_${letter}`).toUpperCase();
-			newJSONStr += `${key}: "process.env.${prefix}${newKey}",`;
+			newJSONStr += `${key}: process.env.${prefix}${newKey},`;
 		}
 
 		newJSONStr = `const config = {${newJSONStr}}`;
