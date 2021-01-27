@@ -23,7 +23,8 @@ class GenerateData {
 		const prefix = this.prefix;
 
 		for (const key in obj) {
-			envLocalStr += `${prefix}${key.toUpperCase()}=${obj[key]} \n`;
+			const newKey = key.replace(/[A-Z]/g, (letter) => `_${letter}`).toUpperCase();
+			envLocalStr += `${prefix}${newKey}=${obj[key]} \n`;
 		}
 
 		return envLocalStr;
@@ -36,7 +37,8 @@ class GenerateData {
 		const prefix = this.prefix;
 
 		for (const key in obj) {
-			newJSONStr += `${key}: "process.env.${prefix}${key.toUpperCase()}",`;
+			const newKey = key.replace(/[A-Z]/g, (letter) => `_${letter}`).toUpperCase();
+			newJSONStr += `${key}: "process.env.${prefix}${newKey}",`;
 		}
 
 		newJSONStr = `const config = {${newJSONStr}}`;
@@ -53,7 +55,7 @@ class GenerateData {
 		for (const key in obj) {
 			const newKey = key.replace(/[A-Z]/g, (letter) => `_${letter}`).toUpperCase();
 			const htmlText = `<span class="key">${prefix}${newKey}</span>=<span class="value">${obj[key]}</span>`;
-			const copyText = `${prefix}${key.toUpperCase()}=${obj[key]}`;
+			const copyText = `${prefix}${newKey}=${obj[key]}`;
 
 			html += `
 			<tr>
@@ -81,7 +83,7 @@ class GenerateData {
 		for (const key in obj) {
 			const newKey = key.replace(/[A-Z]/g, (letter) => `_${letter}`).toUpperCase();
 			const htmlText = `<span class="key">${key}</span>: <span class="value">process.env.${prefix}${newKey}</span>`;
-			const copyText = `${key}: process.env.${prefix}${key.toUpperCase()}`;
+			const copyText = `${key}: process.env.${prefix}${newKey}`;
 
 			html += `
 			<tr>
