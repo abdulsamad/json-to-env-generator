@@ -43,31 +43,41 @@ form.addEventListener(
 			// Copy all env output
 			envOutputBtn.onclick = () => {
 				copyText(data.envStr);
-				const myToast: any = Toastify({
+				Toastify({
 					text: 'Env Output Copied!',
-					duration: 3000,
-				});
-
-				myToast.showToast();
+					duration: 2000,
+					gravity: 'bottom',
+					offset: {
+						y: '5.5rem',
+						x: '5.5rem',
+					},
+				}).showToast();
 			};
 
 			// Copy all JSON output
 			jsonOutputBtn.onclick = () => {
 				copyText(data.jsonStr);
-				const myToast: any = Toastify({
+				Toastify({
 					text: 'Reference Output Copied!',
-					duration: 3000,
-				});
-
-				myToast.showToast();
+					duration: 2000,
+					gravity: 'bottom',
+					offset: {
+						y: '5.5rem',
+						x: '5.5rem',
+					},
+				}).showToast();
 			};
 		} catch (err) {
 			// Setting to any to ignore typescript warning beacause no types included in library
 			Toastify({
-				text: `Please enter valid JSON! Don't edit or change config from firebase console just copy and paste it here.`,
-				duration: 3000,
-				// gravity: 'bottom',
-				backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+				text: `Please enter valid JSON config! Just copy and paste your config (for e.g: firebase) directly here. <br> <b>Note:</b> Nested JSON is not supported.`,
+				duration: 4000,
+				gravity: 'bottom',
+				offset: {
+					y: '5.5rem',
+					x: '5.5rem',
+				},
+				backgroundColor: 'linear-gradient(to right, #cb2d3e, #ef473a)',
 			}).showToast();
 		}
 	},
@@ -98,12 +108,15 @@ envOutput.addEventListener(
 			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset.copy;
 			copyText(txt);
 
-			const myToast = Toastify({
+			Toastify({
 				text: 'Copied!',
-				duration: 3000,
-			});
-
-			myToast.showToast();
+				duration: 2000,
+				gravity: 'bottom',
+				offset: {
+					y: '5.5rem',
+					x: '5.5rem',
+				},
+			}).showToast();
 		}
 	},
 	false
@@ -119,12 +132,15 @@ refOutput.addEventListener(
 			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset.copy;
 			copyText(txt);
 
-			const myToast = Toastify({
+			Toastify({
 				text: 'Copied!',
-				duration: 3000,
-			});
-
-			myToast.showToast();
+				duration: 2000,
+				gravity: 'bottom',
+				offset: {
+					y: '5.5rem',
+					x: '5.5rem',
+				},
+			}).showToast();
 		}
 	},
 	false
