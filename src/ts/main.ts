@@ -3,6 +3,8 @@ import GenerateData from './generateData';
 import { copyText, dummyConfigJSON } from './utils';
 import Toastify from 'toastify-js';
 
+// TODO: Error toast is not responsive
+
 // Form Submission
 
 const form = document.querySelector('#convert-form') as HTMLFormElement;
