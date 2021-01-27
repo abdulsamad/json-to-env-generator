@@ -1,9 +1,9 @@
 import JSON5 from 'json5';
 import ClipboardIcon from '../assets/clipboard-icon.svg';
 
-class generateData {
-	str: object;
-	prefix: string;
+class GenerateData {
+	private str: object;
+	private prefix: string;
 
 	constructor(str: string, prefix: string) {
 		try {
@@ -101,4 +101,4 @@ class generateData {
 	}
 }
 
-export default generateData;
+export default GenerateData;
