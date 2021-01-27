@@ -5,7 +5,7 @@
 	$footer-padding: 2rem 1.5rem,
 	$footer-background-color: transparent,
 );
-@use 'toastify';
+@use '~toastify-js/src/toastify.css';
 @use 'animation';
 
 body {

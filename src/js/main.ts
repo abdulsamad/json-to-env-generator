@@ -1,7 +1,7 @@
 import JSON5 from 'json5';
 import generateData from './generateData';
 import { copyText, dummyConfigJSON } from './utils';
-import Toastify from './toastify';
+import Toastify from 'toastify-js';
 
 // Form Submission
 
@@ -63,12 +63,12 @@ form.addEventListener(
 			};
 		} catch (err) {
 			// Setting to any to ignore typescript warning beacause no types included in library
-			const myToast: any = Toastify({
+			Toastify({
 				text: `Please enter valid JSON! Don't edit or change config from firebase console just copy and paste it here.`,
 				duration: 3000,
-			});
-
-			myToast.showToast();
+				// gravity: 'bottom',
+				backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+			}).showToast();
 		}
 	},
 	false
@@ -98,7 +98,7 @@ envOutput.addEventListener(
 			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset.copy;
 			copyText(txt);
 
-			const myToast: any = Toastify({
+			const myToast = Toastify({
 				text: 'Copied!',
 				duration: 3000,
 			});
@@ -119,7 +119,7 @@ refOutput.addEventListener(
 			const txt = (target.closest('.copy-button') as HTMLButtonElement).dataset.copy;
 			copyText(txt);
 
-			const myToast: any = Toastify({
+			const myToast = Toastify({
 				text: 'Copied!',
 				duration: 3000,
 			});
