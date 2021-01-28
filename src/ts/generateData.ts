@@ -17,7 +17,7 @@ class GenerateData {
 		}
 	}
 
-	get envStr() {
+	get envStr(): string {
 		let envLocalStr = '';
 		const obj: any = this.str;
 		const prefix = this.prefix;
@@ -30,7 +30,7 @@ class GenerateData {
 		return envLocalStr;
 	}
 
-	get jsonStr() {
+	get jsonStr(): string {
 		let newJSONStr = '';
 
 		const obj = this.str;
@@ -46,7 +46,7 @@ class GenerateData {
 		return newJSONStr;
 	}
 
-	get envHTML() {
+	get envHTML(): string {
 		const obj: any = this.str;
 		const prefix = this.prefix;
 		let html = '';
@@ -74,7 +74,7 @@ class GenerateData {
 		return html;
 	}
 
-	get jsonHTML() {
+	get jsonHTML(): string {
 		const obj = this.str;
 		const prefix = this.prefix;
 		let html = '';
