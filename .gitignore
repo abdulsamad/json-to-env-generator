@@ -112,3 +112,6 @@ typings/
 
 # Production Code
 dist
+
+# Mac
+.DS_Store
