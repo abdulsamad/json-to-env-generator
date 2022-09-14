@@ -1,5 +1,5 @@
 ## JSON to Env Generator
-JSON to Env Generator can be used to convert a JSON to .env with an optional prefix. You can paste a config obj (e.g firebase config) and it will give you the environment variables and javascript reference for values.
+JSON to Env Generator to convert a JSON config to .env with an optional prefix. You can paste a config object (e.g firebase config) and it will output you the environment variables and javascript reference for environment variables.
 
 > **Note:** Nested objects are not supported atleast as of now.
 
