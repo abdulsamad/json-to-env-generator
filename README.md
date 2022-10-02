@@ -1,9 +1,0 @@
-## JSON to Env Generator
-JSON to Env Generator to convert a JSON config to .env with an optional prefix. You can paste a config object (e.g firebase config) and it will output you the environment variables and javascript reference for environment variables.
-
-> **Note:** Nested objects are not supported.
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/e9a3957f-3699-4dd6-bcc8-63bac6d1690d/deploy-status)](https://app.netlify.com/sites/json-to-env-generator/deploys)
-
-
-[![json to env generator screenshot](readme/json-to-env-generator-screenshot.png "JSON to Env Generator")](https://json-to-env-generator.netlify.app/)
