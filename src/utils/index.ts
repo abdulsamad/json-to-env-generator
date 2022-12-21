@@ -2,7 +2,7 @@ import Toastify from 'toastify-js';
 
 import type { convertedObjectType } from '../stores';
 
-export const copyText = (txt: string): boolean => {
+export const copyText = (txt: string) => {
 	const elem = document.createElement('textarea');
 	const body = document.body;
 
@@ -13,7 +13,6 @@ export const copyText = (txt: string): boolean => {
 	elem.select();
 	document.execCommand('copy');
 	body.removeChild(elem);
-	return true;
 };
 
 export const dummyConfigJSON = {
@@ -97,18 +96,11 @@ interface IToast {
 	backgroundColor?: string;
 }
 
-export const Toast = ({
-	text,
-	duration = 2000,
-	gravity = 'bottom',
-	close,
-	backgroundColor,
-}: IToast) => {
+export const Toast = ({ text, duration = 2000, gravity = 'bottom', close }: IToast) => {
 	Toastify({
 		text: text,
 		duration: duration,
 		gravity,
-		backgroundColor,
 		close,
 		offset: {
 			y: '5.5rem',
