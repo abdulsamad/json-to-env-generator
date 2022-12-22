@@ -39,7 +39,7 @@
 					</header>
 					<div class="card-content">
 						<div class="content">
-							<table class="table">
+							<table class="table custom-table">
 								<tbody>
 									{#each $envOutput as { key, value }}
 										<tr>
@@ -84,7 +84,7 @@
 					</header>
 					<div class="card-content">
 						<div class="content">
-							<table class="table">
+							<table class="table custom-table">
 								<tbody>
 									{#each $referenceOutput as { key, value }}
 										<tr>

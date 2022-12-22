@@ -47,11 +47,20 @@ body {
 	color: #d3d3d3;
 }
 
+.custom-table {
+	table-layout: fixed;
+	width: 100%;
+	overflow: hidden;
+}
+
 .code {
 	-webkit-user-select: all;
 	-moz-user-select: all;
 	-ms-user-select: all;
 	user-select: all;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .card {
