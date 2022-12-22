@@ -6,6 +6,7 @@
 	$family-sans-serif: Poppins,
 	$footer-background-color: transparent
 );
+@use '../node_modules/toastify-js/src/toastify.css';
 
 /*
 	Styles
@@ -107,6 +108,11 @@ tr {
 	Animation
 */
 
+.fade-in-down {
+	-webkit-animation: fadeInDown 0.4s ease-out;
+	animation: fadeInDown 0.4s ease-out;
+}
+
 @-webkit-keyframes fadeInDown {
 	0% {
 		opacity: 0;
@@ -127,9 +133,4 @@ tr {
 		opacity: 1;
 		transform: translateY(0);
 	}
-}
-
-.fade-in-down {
-	-webkit-animation: fadeInDown 0.4s ease-out;
-	animation: fadeInDown 0.4s ease-out;
 }
