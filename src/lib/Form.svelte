@@ -69,10 +69,18 @@
 											<input
 												type="text"
 												id="prefix"
+												list="prefix-list"
 												class="input has-background-dark has-text-white-bis is-uppercase"
 												placeholder="Prefix for Env vars"
+												autocomplete="off"
 												bind:value={$prefix}
+												on:change={() => console.log($prefix)}
 											/>
+											<datalist id="prefix-list">
+												<option value="NEXT_PUBLIC_" />
+												<option value="GATSBY_" />
+												<option value="REACT_APP_" />
+											</datalist>
 										</p>
 									</div>
 								</div>
