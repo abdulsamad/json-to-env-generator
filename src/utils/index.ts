@@ -81,7 +81,5 @@ export const convertToJavaScriptArray = (
 		});
 	}
 
-	// str = `const config = {${str}}`;
-
 	return collection;
 };
