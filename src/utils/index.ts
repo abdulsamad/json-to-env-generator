@@ -1,5 +1,3 @@
-import Toastify from 'toastify-js';
-
 import type { convertedObjectType } from '../stores';
 
 export const copyText = (txt: string) => {
@@ -86,25 +84,4 @@ export const convertToJavaScriptArr = (
 	// str = `const config = {${str}}`;
 
 	return collection;
-};
-
-interface IToast {
-	text: string;
-	duration?: number;
-	gravity?: 'top' | 'bottom';
-	close?: boolean;
-	backgroundColor?: string;
-}
-
-export const Toast = ({ text, duration = 2000, gravity = 'bottom', close }: IToast) => {
-	Toastify({
-		text: text,
-		duration: duration,
-		gravity,
-		close,
-		offset: {
-			y: '5.5rem',
-			x: '5.5rem',
-		},
-	}).showToast();
 };
