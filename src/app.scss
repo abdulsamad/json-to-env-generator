@@ -1,12 +1,16 @@
-@use '~bulma/bulma' with (
+@use '../node_modules/bulma/bulma.sass' with (
 	$primary: #73a5ff,
-	$card-shadow:  0 3px 6px rgba(0,0,0,0.16)#{","} 0 3px 6px rgba(0,0,0,0.23),
+	$card-shadow: 0 3px 6px rgba(0, 0, 0, 0.16) #{','} 0 3px 6px rgba(0, 0, 0, 0.23),
 	$scheme-main: #252525,
 	$footer-padding: 2rem 1.5rem,
-	$footer-background-color: transparent,
+	$family-sans-serif: Poppins,
+	$footer-background-color: transparent
 );
-@use '~toastify-js/src/toastify.css';
-@use 'animation';
+@use '../node_modules/toastify-js/src/toastify.css';
+
+/*
+	Styles
+*/
 
 body {
 	min-height: 100vh;
@@ -98,4 +102,35 @@ tr {
 .content-container {
 	height: calc(100% - 5.5rem);
 	overflow: auto;
+}
+
+/* 
+	Animation
+*/
+
+.fade-in-down {
+	-webkit-animation: fadeInDown 0.4s ease-out;
+	animation: fadeInDown 0.4s ease-out;
+}
+
+@-webkit-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-40px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
