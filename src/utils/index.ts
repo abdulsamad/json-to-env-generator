@@ -53,7 +53,7 @@ export const convertEnvToArrray = (
 	return collection;
 };
 
-export const convertToJavaScriptArr = (
+export const convertToJavaScriptArray = (
 	obj: object,
 	prefix: string,
 	depth = 0,
@@ -65,7 +65,7 @@ export const convertToJavaScriptArr = (
 		const value = obj[key];
 
 		if (typeof value === 'object') {
-			const childStr = convertToJavaScriptArr(
+			const childStr = convertToJavaScriptArray(
 				value,
 				`${prefix}${newKey}${depth + 1 > 0 ? '_' : ''}`,
 				++depth,
@@ -76,7 +76,7 @@ export const convertToJavaScriptArr = (
 
 		collection.push({
 			key,
-			value: `process.env.${prefix}${newKey},`,
+			value: `process.env.${prefix}${newKey}`,
 			depth,
 		});
 	}
