@@ -27,7 +27,7 @@
 		} catch (err) {
 			Toastify({
 				text: `Please enter valid JSON config! Just copy and paste your config (for e.g: Firebase) directly here.`,
-				duration: 2000,
+				duration: 5000,
 				gravity: 'bottom',
 				backgroundColor: 'linear-gradient(to right, #cb2d3e, #ef473a)',
 			}).showToast();
