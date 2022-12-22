@@ -4,7 +4,7 @@
 
 	import { showResult, prefix, currentCode, envOutput, referenceOutput } from '../stores';
 
-	import { dummyConfigJSON, convertEnvToArrray, convertToJavaScriptArray } from '../utils/index';
+	import { dummyConfigJSON, convertEnvToArray, convertToJavaScriptArray } from '../utils/index';
 
 	let code: string;
 
@@ -16,7 +16,7 @@
 			const end = code.lastIndexOf('}') + 1;
 			const parsedJSON = JSON5.parse(code.slice(start, end));
 
-			const envString = convertEnvToArrray(parsedJSON, $prefix);
+			const envString = convertEnvToArray(parsedJSON, $prefix);
 			const JSONString = convertToJavaScriptArray(parsedJSON, $prefix);
 
 			currentCode.set(parsedJSON);
