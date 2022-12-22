@@ -22,7 +22,7 @@ export const dummyConfigJSON = {
 	appId: '7311:4c91:411f:5ce7:6f76:f67e:37d2:a997',
 };
 
-export const convertEnvToArrray = (
+export const convertEnvToArray = (
 	obj: object,
 	prefix: string,
 	depth = 0,
@@ -34,7 +34,7 @@ export const convertEnvToArrray = (
 		const value = obj[key];
 
 		if (typeof value === 'object') {
-			const childStr = convertEnvToArrray(
+			const childStr = convertEnvToArray(
 				value,
 				`${prefix}${newKey}${depth + 1 > 0 ? '_' : ''}`,
 				++depth,
