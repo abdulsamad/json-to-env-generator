@@ -74,7 +74,6 @@
 												placeholder="Prefix for Env vars"
 												autocomplete="off"
 												bind:value={$prefix}
-												on:change={() => console.log($prefix)}
 											/>
 											<datalist id="prefix-list">
 												<option value="NEXT_PUBLIC_" />
