@@ -74,9 +74,12 @@ export const convertToJavaScriptArray = (
 			continue;
 		}
 
+		// ! Issue with svelte compiler process.env in string parses to ({}) in build (not dev mode)
+		// console.log({ value: `process.env.` });
+
 		collection.push({
 			key,
-			value: `process.env.${prefix}${newKey}`,
+			value: `${'process'}.${'env'}.${prefix}${newKey}`,
 			depth,
 		});
 	}
