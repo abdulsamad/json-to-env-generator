@@ -2,9 +2,12 @@
 	import JSON5 from 'json5';
 	import Toastify from 'toastify-js';
 
-	import { showResult, prefix, currentCode, envOutput, referenceOutput } from '../stores';
-
-	import { dummyConfigJSON, convertEnvToArray, convertToJavaScriptArray } from '../utils/index';
+	import { showResult, prefix, currentCode, envOutput, referenceOutput, bundler } from '../stores';
+	import {
+		dummyConfigJSON,
+		createIterableEnvFileData,
+		createIterableEvnReferenceData,
+	} from '../utils/index';
 
 	let code: string;
 
@@ -16,8 +19,11 @@
 			const end = code.lastIndexOf('}') + 1;
 			const parsedJSON = JSON5.parse(code.slice(start, end));
 
-			const envString = convertEnvToArray(parsedJSON, $prefix);
-			const JSONString = convertToJavaScriptArray(parsedJSON, $prefix);
+			const envString = createIterableEnvFileData(parsedJSON, $prefix);
+			const JSONString = createIterableEvnReferenceData(parsedJSON, {
+				prefix: $prefix,
+				bundler: $bundler,
+			});
 
 			currentCode.set(parsedJSON);
 			envOutput.set(envString);
@@ -59,28 +65,63 @@
 					</div>
 					<div class="field is-horizontal my-5">
 						<div class="columns">
-							<div class="column is-one-fifth">
-								<label class="label has-text-white-bis mt-2 mr-3" for="prefix">Prefix</label>
+							<div class="column">
+								<div class="columns">
+									<div class="column is-one-fifth">
+										<label
+											class="label has-text-white-bis mt-2 mr-3"
+											for="prefix"
+											title="Environment variable prefix">Prefix</label
+										>
+									</div>
+									<div class="column is-four-fifths">
+										<div class="field-body">
+											<div class="field">
+												<p class="control">
+													<input
+														type="text"
+														id="prefix"
+														list="prefix-list"
+														class="input has-background-dark has-text-white-bis is-uppercase"
+														placeholder="Prefix for Env vars"
+														autocomplete="off"
+														bind:value={$prefix}
+													/>
+													<datalist id="prefix-list">
+														<option value="NEXT_PUBLIC_" />
+														<option value="GATSBY_" />
+														<option value="REACT_APP_" />
+													</datalist>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="column is-four-fifths">
-								<div class="field-body">
-									<div class="field">
-										<p class="control">
-											<input
-												type="text"
-												id="prefix"
-												list="prefix-list"
-												class="input has-background-dark has-text-white-bis is-uppercase"
-												placeholder="Prefix for Env vars"
-												autocomplete="off"
-												bind:value={$prefix}
-											/>
-											<datalist id="prefix-list">
-												<option value="NEXT_PUBLIC_" />
-												<option value="GATSBY_" />
-												<option value="REACT_APP_" />
-											</datalist>
-										</p>
+							<div class="column">
+								<div class="columns">
+									<div class="column is-one-fifth">
+										<label
+											class="label has-text-white-bis mt-2 mr-5"
+											for="bundler"
+											title="Environment variable reference prefix">Bundler</label
+										>
+									</div>
+									<div class="column is-four-fifths">
+										<div class="field-body">
+											<div class="field">
+												<div class="select ml-4">
+													<select
+														class="has-text-white-bis has-background-dark"
+														id="bundler"
+														bind:value={$bundler}
+													>
+														<option value="process.env">Webpack (process.env)</option>
+														<option value="import.meta.env">Vite (import.meta.env)</option>
+													</select>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>

@@ -8,6 +8,7 @@ export interface convertedObjectType {
 
 export const showResult = writable(false);
 export const prefix = writable('NEXT_PUBLIC_');
+export const bundler = writable('process.env');
 export const currentCode = writable({});
 export const envOutput = writable([]);
 export const referenceOutput = writable([]);

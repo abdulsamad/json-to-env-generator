@@ -22,7 +22,7 @@ export const dummyConfigJSON = {
 	appId: '7311:4c91:411f:5ce7:6f76:f67e:37d2:a997',
 };
 
-export const convertEnvToArray = (
+export const createIterableEnvFileData = (
 	obj: object,
 	prefix: string,
 	depth = 0,
@@ -34,7 +34,7 @@ export const convertEnvToArray = (
 		const value = obj[key];
 
 		if (typeof value === 'object') {
-			const childStr = convertEnvToArray(
+			const childStr = createIterableEnvFileData(
 				value,
 				`${prefix}${newKey}${depth + 1 > 0 ? '_' : ''}`,
 				++depth,
@@ -53,9 +53,9 @@ export const convertEnvToArray = (
 	return collection;
 };
 
-export const convertToJavaScriptArray = (
+export const createIterableEvnReferenceData = (
 	obj: object,
-	prefix: string,
+	{ prefix, bundler }: { prefix: string; bundler: string },
 	depth = 0,
 ): convertedObjectType[] => {
 	const collection: convertedObjectType[] = [];
@@ -65,9 +65,9 @@ export const convertToJavaScriptArray = (
 		const value = obj[key];
 
 		if (typeof value === 'object') {
-			const childStr = convertToJavaScriptArray(
+			const childStr = createIterableEvnReferenceData(
 				value,
-				`${prefix}${newKey}${depth + 1 > 0 ? '_' : ''}`,
+				{ prefix: `${prefix}${newKey}${depth + 1 > 0 ? '_' : ''}`, bundler },
 				++depth,
 			);
 			collection.push(...childStr);
@@ -79,7 +79,7 @@ export const convertToJavaScriptArray = (
 
 		collection.push({
 			key,
-			value: `${'process'}.${'env'}.${prefix}${newKey}`,
+			value: `${bundler}.${prefix}${newKey}`,
 			depth,
 		});
 	}
