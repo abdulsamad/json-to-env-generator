@@ -117,8 +117,9 @@
 														bind:value={$bundler}
 													>
 														<option value="process.env">Webpack &#40;process.env&#41;</option>
-														<option value={`${'import'}.meta.env`}
-															>Vite &#40;{`${'import'}.meta.env`}&#41;</option
+														<!-- <option value={`${'import'}.meta.env`}>Vite &#40;{`${'import'}.meta.env`}&#41;</option> -->
+														<option value={String.raw({ raw: 'import.meta.env' })}
+															>Vite &#40;{String.raw({ raw: 'import.meta.env' })}&#41;</option
 														>
 													</select>
 												</div>
