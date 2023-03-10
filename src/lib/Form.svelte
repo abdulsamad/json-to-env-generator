@@ -91,7 +91,7 @@
 														autocomplete="off"
 														bind:value={$prefix}
 														on:change={() => {
-															if (showResult) generate();
+															if ($showResult) generate();
 														}}
 													/>
 													<datalist id="prefix-list">
@@ -123,7 +123,7 @@
 														id="bundler"
 														bind:value={$bundler}
 														on:change={() => {
-															if (showResult) generate();
+															if ($showResult) generate();
 														}}
 													>
 														<option value="process.env">Webpack &#40;process.env&#41;</option>
