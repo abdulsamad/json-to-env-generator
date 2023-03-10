@@ -11,13 +11,11 @@
 
 	let code: string;
 
-	const handleSubmit = async () => {
+	const generate = async () => {
 		try {
-			showResult.set(false);
-
 			const start = code.indexOf('{');
 			const end = code.lastIndexOf('}') + 1;
-			const parsedJSON = JSON5.parse(code.slice(start, end));
+			const parsedJSON = await JSON5.parse(code.slice(start, end));
 
 			const envString = createIterableEnvFileData(parsedJSON, $prefix);
 			const JSONString = createIterableEvnReferenceData(parsedJSON, {
@@ -28,8 +26,6 @@
 			currentCode.set(parsedJSON);
 			envOutput.set(envString);
 			referenceOutput.set(JSONString);
-
-			showResult.set(true);
 		} catch (err) {
 			Toastify({
 				text: `Please enter valid JSON config! Just copy and paste your config (for e.g: Firebase) directly here.`,
@@ -38,6 +34,14 @@
 				backgroundColor: 'linear-gradient(to right, #cb2d3e, #ef473a)',
 			}).showToast();
 		}
+	};
+
+	const handleSubmit = async () => {
+		showResult.set(false);
+
+		await generate();
+
+		showResult.set(true);
 	};
 
 	const fillSampleData = () => {
@@ -82,10 +86,13 @@
 														type="text"
 														id="prefix"
 														list="prefix-list"
-														class="input has-background-dark has-text-white-bis is-uppercase"
+														class="input has-background-dark has-text-white-bis"
 														placeholder="Prefix for Env vars"
 														autocomplete="off"
 														bind:value={$prefix}
+														on:change={() => {
+															if (showResult) generate();
+														}}
 													/>
 													<datalist id="prefix-list">
 														<option value="NEXT_PUBLIC_" />
@@ -115,6 +122,9 @@
 														class="has-text-white-bis has-background-dark"
 														id="bundler"
 														bind:value={$bundler}
+														on:change={() => {
+															if (showResult) generate();
+														}}
 													>
 														<option value="process.env">Webpack &#40;process.env&#41;</option>
 														<option value={`${'import'}.meta.env`}
