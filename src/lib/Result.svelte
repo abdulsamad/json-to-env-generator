@@ -33,7 +33,7 @@
 	<div class="container">
 		<div class="columns is-desktop">
 			<div class="column is-half mx-auto">
-				<div class="card code-card">
+				<div class="card code-card is-clipped">
 					<header class="card-header has-background-primary">
 						<p class="card-header-title has-text-white-bis">Env File</p>
 					</header>
@@ -78,7 +78,7 @@
 				</div>
 			</div>
 			<div class="column is-half mx-auto">
-				<div class="card code-card">
+				<div class="card code-card is-clipped">
 					<header class="card-header has-background-primary">
 						<p class="card-header-title has-text-white-bis">Reference</p>
 					</header>
