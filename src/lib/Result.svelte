@@ -32,7 +32,7 @@
 <section class="section output-container" transition:slide={{ duration: 300 }}>
 	<div class="container">
 		<div class="columns is-desktop">
-			<div class="column is-half">
+			<div class="column is-half mx-auto">
 				<div class="card code-card">
 					<header class="card-header has-background-primary">
 						<p class="card-header-title has-text-white-bis">Env File</p>
@@ -77,7 +77,7 @@
 					</footer>
 				</div>
 			</div>
-			<div class="column is-half">
+			<div class="column is-half mx-auto">
 				<div class="card code-card">
 					<header class="card-header has-background-primary">
 						<p class="card-header-title has-text-white-bis">Reference</p>
