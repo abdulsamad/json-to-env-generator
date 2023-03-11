@@ -5,7 +5,7 @@
 		</p>
 		<p class="has-text-white-bis">
 			Made with <span class="has-text-danger">&#10084;</span> by
-			<a class="has-text-primary" href="https://abdulsamad.dev">AbdulSamad</a>
+			<span class="has-text-primary">AbdulSamad</span>
 		</p>
 	</div>
 </footer>
