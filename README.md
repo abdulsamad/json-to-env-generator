@@ -3,4 +3,4 @@
 
 Completely rewritten from scratch using Svelte. Svelte is a modern JavaScript framework that allows us to build powerful, reactive web applications with minimal code.
 
-[![json to env generator screenshot](readme/json-to-env-generator-screenshot.png "JSON to Env Generator")](https://json-to-env-generator.netlify.app/)
+[![json to env generator screenshot](readme/json-to-env-generator-screenshot.png "JSON to Env Generator")](https://json-to-env-generator.abdulsamad.dev/)
